@@ -57,25 +57,19 @@ qs("#toStep3Btn").addEventListener("click", () => {
   if (selected.size === 0) return;
 
   const date    = new Date(dateInput.value + "T12:00:00");
-  const dateStr = date.toLocaleDateString("en-US", {
+  const dateStr = date.toLocaleDateString("ru-RU", {
     weekday: "long", month: "long", day: "numeric",
   });
 
-  let timeStr = "";
-  if (timeInput.value) {
-    const [h, m] = timeInput.value.split(":").map(Number);
-    const period = h >= 12 ? "pm" : "am";
-    const hour   = h % 12 || 12;
-    timeStr = ` at ${hour}:${String(m).padStart(2, "0")} ${period}`;
-  }
+  const timeStr = timeInput.value ? ` в ${timeInput.value}` : "";
 
   const activitiesStr = [...selected].join(", ");
   const fullDate      = dateStr + timeStr;
   const wishes        = customWishes.value.trim();
 
   qs("#confirmSubtitle").textContent = timeStr
-    ? `${timeStr.trim()} — noted and screenshotted. no take-backs.`
-    : "noted and screenshotted. no take-backs.";
+    ? `${timeInput.value} — зафиксировано и заскринено. назад дороги нет.`
+    : "зафиксировано и заскринено. назад дороги нет.";
   qs("#confirmWhen").textContent       = fullDate;
   qs("#confirmActivities").textContent = activitiesStr;
 
@@ -99,10 +93,10 @@ qs("#toStep3Btn").addEventListener("click", () => {
 // ---- Step 3: Copy ----
 qs("#copyBtn").addEventListener("click", () => {
   const wishes = qs("#confirmWishes").textContent;
-  const wishesLine = wishes ? `\nAlso: ${wishes}` : "";
-  const text = `It's a date! 🎉\nWhen: ${qs("#confirmWhen").textContent}\nActivities: ${qs("#confirmActivities").textContent}${wishesLine}`;
+  const wishesLine = wishes ? `\nТакже: ${wishes}` : "";
+  const text = `Это свидание! 🎉\nКогда: ${qs("#confirmWhen").textContent}\nАктивности: ${qs("#confirmActivities").textContent}${wishesLine}`;
   navigator.clipboard.writeText(text).then(() => {
     qs("#copyFeedback").classList.remove("hidden");
-    qs("#copyBtn").textContent = "✓ copied!";
+    qs("#copyBtn").textContent = "✓ скопировано!";
   });
 });
