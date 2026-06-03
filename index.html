@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will you go out with me? 🥹</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;1,300&family=Leckerli+One&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Step 0: Will you go out with me? -->
+    <div class="step" id="step-0">
+      <h2>Will you go out with me?</h2>
+      <img class="gif" alt="gif" src="https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif" />
+      <div class="btn-group">
+        <button class="yes-btn">Yes</button>
+        <button class="no-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Step 1: When are you free? -->
+    <div class="step hidden" id="step-1">
+      <h1 class="step-title">So... when are you free?</h1>
+      <p class="step-subtitle">(no pressure. but my entire week now depends on this.)</p>
+      <div class="card-container">
+        <div class="field-group">
+          <label class="field-label" for="dateInput">🗓️ Pick a Day</label>
+          <input type="date" id="dateInput" class="field-input" required />
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="timeInput">⏰ What Time?</label>
+          <input type="time" id="timeInput" class="field-input" />
+        </div>
+      </div>
+      <button class="action-btn" id="toStep2Btn">locking it in →</button>
+    </div>
+
+    <!-- Step 2: What activities? -->
+    <div class="step hidden" id="step-2">
+      <h1 class="step-title">What are we feeling?</h1>
+      <p class="step-subtitle">(pick as many as you want. i'm not made of money but i'll figure it out.)</p>
+      <div class="card-container">
+        <div class="activities-grid">
+          <div class="activity-card" data-activity="Movie">
+            <span class="activity-emoji">🎬</span>
+            <span class="activity-name">Movie</span>
+          </div>
+          <div class="activity-card" data-activity="Coffee">
+            <span class="activity-emoji">☕</span>
+            <span class="activity-name">Coffee</span>
+          </div>
+          <div class="activity-card" data-activity="Live Music">
+            <span class="activity-emoji">🎵</span>
+            <span class="activity-name">Live Music</span>
+          </div>
+          <div class="activity-card" data-activity="Park Walk">
+            <span class="activity-emoji">🌳</span>
+            <span class="activity-name">Park Walk</span>
+          </div>
+          <div class="activity-card" data-activity="Board Games">
+            <span class="activity-emoji">🎲</span>
+            <span class="activity-name">Board Games</span>
+          </div>
+          <div class="activity-card" data-activity="Hiking">
+            <span class="activity-emoji">🥾</span>
+            <span class="activity-name">Hiking</span>
+          </div>
+          <div class="activity-card" data-activity="Dinner">
+            <span class="activity-emoji">🍽️</span>
+            <span class="activity-name">Dinner</span>
+          </div>
+          <div class="activity-card" data-activity="Bowling">
+            <span class="activity-emoji">🎳</span>
+            <span class="activity-name">Bowling</span>
+          </div>
+          <div class="activity-card" data-activity="Shopping">
+            <span class="activity-emoji">🛍️</span>
+            <span class="activity-name">Shopping</span>
+          </div>
+        </div>
+        <div class="field-group" style="margin-top: 14px; margin-bottom: 0;">
+          <label class="field-label" for="customWishes">✏️ anything else on your mind?</label>
+          <textarea id="customWishes" class="field-input" placeholder="write it here..." rows="3" style="resize: none;"></textarea>
+        </div>
+      </div>
+      <button class="action-btn" id="toStep3Btn">great choices, obviously →</button>
+    </div>
+
+    <!-- Step 3: It's a date! -->
+    <div class="step hidden" id="step-3">
+      <h1 class="step-title">It's a date!</h1>
+      <p class="step-subtitle" id="confirmSubtitle"></p>
+      <div class="card-container">
+        <div class="confirm-row">
+          <span class="confirm-icon">🗓️</span>
+          <div>
+            <div class="confirm-label">When</div>
+            <div class="confirm-value" id="confirmWhen"></div>
+          </div>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-icon">✨</span>
+          <div>
+            <div class="confirm-label">Activities</div>
+            <div class="confirm-value" id="confirmActivities"></div>
+          </div>
+        </div>
+        <div class="confirm-row hidden" id="confirmWishesRow">
+          <span class="confirm-icon">💭</span>
+          <div>
+            <div class="confirm-label">Also</div>
+            <div class="confirm-value" id="confirmWishes"></div>
+          </div>
+        </div>
+      </div>
+      <button class="action-btn" id="copyBtn">Copy plan &amp; text me (i'll pretend to be surprised)</button>
+      <p class="copy-feedback hidden" id="copyFeedback">copied. the ball is, regrettably, in your court now.</p>
+      <p class="ps-note">p.s. normal people just text. i built a whole website. for you. no big deal.</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

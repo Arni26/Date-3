@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #faf3ea;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ---- Step system ---- */
+.step {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px 20px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.step.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Step 0 ---- */
+#step-0 h2 {
+  font-family: 'Leckerli One', cursive;
+  font-size: 1.8em;
+  color: #c0392b;
+  margin-bottom: 16px;
+}
+
+#step-0 .gif {
+  width: 100%;
+  border-radius: 12px;
+}
+
+#step-0 .btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+#step-0 .yes-btn,
+#step-0 .no-btn {
+  width: 140px;
+  height: 50px;
+  font-family: 'Leckerli One', cursive;
+  font-size: 1.1em;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s;
+}
+
+#step-0 .yes-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+}
+
+#step-0 .yes-btn:hover {
+  transform: scale(1.05);
+}
+
+#step-0 .no-btn {
+  background: white;
+  color: #c0392b;
+  border: 2px solid #c0392b;
+}
+
+/* ---- Shared: Steps 1–3 ---- */
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2em;
+  color: #c0392b;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.step-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.82em;
+  color: #9a7060;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.card-container {
+  border: 1.5px dashed #c0392b;
+  border-radius: 16px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.55);
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* ---- Step 1: Fields ---- */
+.field-group {
+  margin-bottom: 14px;
+}
+
+.field-group:last-child {
+  margin-bottom: 0;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.75em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #7a5c4f;
+  margin-bottom: 7px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid #e0c9be;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95em;
+  color: #2c1810;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field-input:focus {
+  border-color: #c0392b;
+}
+
+.field-input.error {
+  border-color: #e74c3c;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}
+
+/* ---- Step 2: Activities ---- */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 8px;
+  border: 1.5px dashed #d4b5a8;
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  user-select: none;
+}
+
+.activity-card:hover {
+  transform: scale(1.04);
+}
+
+.activity-emoji {
+  font-size: 1.8em;
+  margin-bottom: 6px;
+}
+
+.activity-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7em;
+  color: #5a3e35;
+  font-weight: 400;
+}
+
+.activity-card.selected {
+  border-style: solid;
+  border-color: #c0392b;
+  background: #fff2f0;
+}
+
+/* ---- Action button ---- */
+.action-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Leckerli One', cursive;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(192, 57, 43, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.35);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* ---- Step 3: Confirmation ---- */
+.confirm-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.confirm-row + .confirm-row {
+  border-top: 1px dashed #d4b5a8;
+}
+
+.confirm-icon {
+  font-size: 1.2em;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.confirm-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.62em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a7060;
+  margin-bottom: 4px;
+}
+
+.confirm-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1em;
+  color: #2c1810;
+  line-height: 1.4;
+}
+
+.copy-feedback {
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #9a7060;
+  margin-top: 12px;
+}
+
+.copy-feedback.hidden {
+  display: none;
+}
+
+.ps-note {
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  font-size: 0.72em;
+  color: #b09080;
+  margin-top: 24px;
+  line-height: 1.5;
+}
